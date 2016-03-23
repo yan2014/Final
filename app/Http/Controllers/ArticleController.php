@@ -10,6 +10,10 @@ use App\Http\Requests\ArticleRequest;
 
 class ArticleController extends Controller
 {
+    public function articles_json() {
+        $articles = Article::all();
+        return response()->json($articles);
+    }
     public function index(){
     	$query=Article::all();
     	return view('article.index',compact('query'));

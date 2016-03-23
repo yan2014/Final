@@ -20,3 +20,10 @@
 |
 */
 Route::resource('/article','ArticleController');
+Route::get('json', 'ArticleController@articles_json')->name('ajson');
+Route::group(['middleware' => 'web'], function () {
+    Route::auth();
+	Route::get('userjson', 'HomeController@users_json')->name('ujson');
+
+    Route::get('/home', 'HomeController@index');
+});
